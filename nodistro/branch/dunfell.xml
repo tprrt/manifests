@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="5" revision="dunfell"/>
+
+  <remote fetch="git://git.openembedded.org" name="openembedded"/>
+
+  <!-- Openembedded layers -->
+  <project remote="openembedded" revision="1.46" name="bitbake" path="layers/bitbake" />
+  <project remote="openembedded" revision="dunfell" name="openembedded-core" path="layers" />
+  <project remote="openembedded" revision="dunfell" name="meta-openembedded" path="layers/meta-openembedded" />
+
+</manifest>
