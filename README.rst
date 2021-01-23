@@ -44,7 +44,7 @@ Then now, you will be able to build an image for the default target:
 Currently two distro flavors are available:
 
 - nodistro
-- exiguous *coming soon*
+- exiguous *(coming soon)*
 
 To select the right distro configuration, it is only required to set
 
@@ -69,9 +69,11 @@ By default, the variable:
 
 If you when reduce the build time you should modify the paths to share the
 following folders between your different build environments:
+
 - `CCACHE_TOP_DIR`
 - `SSTATE_DIR`
 - `DL_DIR`
+
 Which are by default located into `BDIR`.
 
 .. _git-repo: https://gerrit.googlesource.com/git-repo
