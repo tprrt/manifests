@@ -3,6 +3,7 @@
 
   <default sync-j="5" revision="master"/>
   <remote fetch="git://git.openembedded.org" name="openembedded"/>
+  <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
 
   <!-- Openembedded layers -->
@@ -15,5 +16,8 @@
   <project remote="yocto" revision="master" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
   <project remote="yocto" revision="master" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="master" name="meta-virtualization" path="layers/meta-virtualization" />
+
+  <!-- STM32 layer -->
+  <project remote="stm32mp" revision="master" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" />
 
 </manifest>
