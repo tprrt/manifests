@@ -5,6 +5,11 @@ repo-git manifests
 
 A collection of `git-repo`_ manifests to set up OE/Yocto build environments.
 
+----
+
+Install git-repo
+================
+
 In first, you should install the `git-repo`_ utility:
 
 .. code-block:: bash
@@ -14,6 +19,9 @@ In first, you should install the `git-repo`_ utility:
     chmod a+x ~/bin/repo
 
 *Note: make sure ~/bin exists and it is part of your PATH*
+
+Pull the OE/Yocto build environment
+===================================
 
 Download the OE/Yocto build environment:
 
@@ -41,12 +49,22 @@ Then now, you will be able to build an image for the default target:
     . ./layers/oe-init-build-env
     bitbake core-image-minimal
 
+Select the distribution
+=======================
+
 Currently two distro flavors are available:
 
 - nodistro
 - exiguous *(coming soon)*
 
-To select the right distro configuration, it is only required to set
+To select the right distro configuration, it is only required to set both environment variables:
+
+- `DISTRO`
+- `TEMPLATECONF`
+
+*Note*
+
+You can also specify `BDIR`, if you want build each distro flavor in a separated folder.
 
 For example, to build the exiguous distro:
 
