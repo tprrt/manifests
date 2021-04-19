@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <include name="nodistro/branch/master.xml" />
+
+  <remote fetch="git://git.yoctoproject.org" name="yoctoproject"/>
+
+  <!-- Yoctoproject layer -->
+  <project remote="yoctoproject" revision="master" name="meta-yocto" path="layers/meta-yocto" />
+
+</manifest>
