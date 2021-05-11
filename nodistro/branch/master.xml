@@ -7,7 +7,7 @@
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
 
   <!-- Openembedded layers -->
-  <project remote="openembedded" revision="1.50" name="bitbake" path="layers/bitbake" />
+  <project remote="openembedded" revision="master" name="bitbake" path="layers/bitbake" />
   <project remote="openembedded" revision="master" name="openembedded-core" path="layers" />
   <project remote="openembedded" revision="master" name="meta-openembedded" path="layers/meta-openembedded" />
 
