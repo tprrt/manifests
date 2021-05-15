@@ -3,6 +3,7 @@
 
   <default sync-j="5" revision="hardknott"/>
 
+  <!-- <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/> -->
   <remote fetch="git://git.openembedded.org" name="openembedded"/>
   <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
@@ -20,5 +21,8 @@
 
   <!-- STM32 layer -->
   <project remote="stm32mp" revision="hardknott" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" />
+
+  <!-- Atmel layer -->
+  <!-- <project remote="atmel" revision="hardknott" name="meta-atmel" path="layers/meta-atmel" /> -->
 
 </manifest>
