@@ -1,0 +1,119 @@
+version: 2.1
+executors:
+  docker-oe:
+    docker:
+      - image: tprrt/debian-oe:latest
+    resource_class: medium
+  docker-python3:
+    docker:
+      - image: circleci/python:3.9.1-buster
+    resource_class: medium
+jobs:
+  prepare:
+    executor: docker-python3
+    steps:
+      - run:
+          name: Install git-repo
+          command: |
+            mkdir ~/bin
+            wget https://commondatastorage.googleapis.com/git-repo-downloads/repo -O ~/bin/repo
+            chmod a+x ~/bin/repo
+            echo 'export PATH="${PATH}:~/bin"' >> ${BASH_ENV}
+      - run:
+          name: Configure Git
+          command: |
+            git config --global user.email "tprrt@tupi.fr"
+            git config --global user.name "tprrt"
+      - run:
+          name: Configure SSH
+          command: |
+            mkdir ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            ssh-keyscan git.openembedded.org >> ~/.ssh/known_hosts
+            ssh-keyscan git.yoctoproject.org >> ~/.ssh/known_hosts
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
+      - run:
+          name: Setup the build environment
+          command: |
+            mkdir dist
+            cd dist
+            repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m nodistro/branch/master.xml
+            repo sync -j4
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - .gitconfig
+            - .ssh
+  fetch:
+    executor: docker-oe
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+            - downloads-{{ .Branch }}-
+            - downloads-
+      - run:
+          name: Fetch sources
+          command: |
+            cd dist
+            source ./layers/oe-init-build-env
+            bitbake --runall=fetch core-image-minimal
+      - save_cache:
+          key: downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+          paths:
+            - dist/build/downloads
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - .gitconfig
+            - .ssh
+  build:
+    executor: docker-oe
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+            - sstate-cache-{{ .Branch }}-
+            - sstate-cache-
+      - run:
+          name: Build the image
+          command: |
+            cd dist
+            source ./layers/oe-init-build-env
+            bitbake core-image-minimal
+      - save_cache:
+          key: sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+          paths:
+            - dist/build/sstate-cache
+      - store_artifacts:
+          path: build/tmp/deploy
+workflows:
+  version: 2
+  prepare-fetch-build:
+    jobs:
+      - prepare:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - fetch:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - prepare
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - fetch
