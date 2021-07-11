@@ -8,9 +8,12 @@ executors:
     docker:
       - image: circleci/python:3.9.1-buster
     resource_class: medium
-jobs:
+commands:
   prepare:
-    executor: docker-python3
+    parameters:
+      manifest:
+        default: nodistro/branch/master.xml
+        type: string
     steps:
       - run:
           name: Install git-repo
@@ -38,7 +41,7 @@ jobs:
           command: |
             mkdir dist
             cd dist
-            repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m nodistro/branch/master.xml
+            repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m <<parameters.manifest>>
             repo sync -j4
       - persist_to_workspace:
           root: .
@@ -47,13 +50,16 @@ jobs:
             - .gitconfig
             - .ssh
   fetch:
-    executor: docker-oe
+    parameters:
+      manifest:
+        default: nodistro/branch/master.xml
+        type: string
     steps:
       - attach_workspace:
           at: .
       - restore_cache:
           keys:
-            - downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+            - downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
             - downloads-{{ .Branch }}-
             - downloads-
       - run:
@@ -63,7 +69,7 @@ jobs:
             source ./layers/oe-init-build-env
             bitbake --runall=fetch core-image-minimal
       - save_cache:
-          key: downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+          key: downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
           paths:
             - dist/build/downloads
       - persist_to_workspace:
@@ -73,13 +79,16 @@ jobs:
             - .gitconfig
             - .ssh
   build:
-    executor: docker-oe
+    parameters:
+      manifest:
+        default: nodistro/branch/master.xml
+        type: string
     steps:
       - attach_workspace:
           at: .
       - restore_cache:
           keys:
-            - sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+            - sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
             - sstate-cache-{{ .Branch }}-
             - sstate-cache-
       - run:
@@ -89,31 +98,47 @@ jobs:
             source ./layers/oe-init-build-env
             bitbake core-image-minimal
       - save_cache:
-          key: sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/nodistro/branch/master.xml" }}
+          key: sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
           paths:
             - dist/build/sstate-cache
       - store_artifacts:
           path: build/tmp/deploy
+jobs:
+  master-prepare:
+    executor: docker-python3
+    steps:
+      - prepare:
+        manifest: nodistro/branch/master.xml
+  master-fetch:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/master.xml
+  master-build:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/master.xml
 workflows:
   version: 2
-  prepare-fetch-build:
+  master-prepare-fetch-build:
     jobs:
-      - prepare:
+      - master-prepare:
           filters:
             branches:
               ignore:
                 - gh-pages
-      - fetch:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-          requires:
-            - prepare
-      - build:
+      - master-fetch:
           filters:
             branches:
               ignore:
                 - gh-pages
           requires:
-            - fetch
+            - master-prepare
+      - master-build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - master-fetch
