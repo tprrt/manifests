@@ -59,7 +59,7 @@ commands:
           at: .
       - restore_cache:
           keys:
-            - downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
+            - downloads-{{ .Branch }}-<<parameters.manifest>>
             - downloads-{{ .Branch }}-
             - downloads-
       - run:
@@ -69,7 +69,7 @@ commands:
             source ./layers/oe-init-build-env
             bitbake --runall=fetch core-image-minimal
       - save_cache:
-          key: downloads-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
+          key: downloads-{{ .Branch }}-<<parameters.manifest>>
           paths:
             - dist/build/downloads
       - persist_to_workspace:
@@ -88,7 +88,7 @@ commands:
           at: .
       - restore_cache:
           keys:
-            - sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
+            - sstate-cache-{{ .Branch }}-<<parameters.manifest>>
             - sstate-cache-{{ .Branch }}-
             - sstate-cache-
       - run:
@@ -98,7 +98,7 @@ commands:
             source ./layers/oe-init-build-env
             bitbake core-image-minimal
       - save_cache:
-          key: sstate-cache-{{ .Branch }}-{{ checksum "dist/.repo/manifests/<<parameters.manifest>>" }}
+          key: sstate-cache-{{ .Branch }}-<<parameters.manifest>>
           paths:
             - dist/build/sstate-cache
       - store_artifacts:
