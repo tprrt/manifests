@@ -109,16 +109,31 @@ jobs:
     steps:
       - prepare:
         manifest: nodistro/branch/master.xml
+  dunfell-prepare:
+    executor: docker-python3
+    steps:
+      - prepare:
+        manifest: nodistro/branch/dunfell.xml
   master-fetch:
     executor: docker-oe
     steps:
       - fetch:
         manifest: nodistro/branch/master.xml
+  dunfell-fetch:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/dunfell.xml
   master-build:
     executor: docker-oe
     steps:
       - fetch:
         manifest: nodistro/branch/master.xml
+  dunfell-build:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/dunfell.xml
 workflows:
   version: 2
   master-prepare-fetch-build:
@@ -133,8 +148,6 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-          requires:
-            - master-prepare
       - master-build:
           filters:
             branches:
@@ -142,3 +155,25 @@ workflows:
                 - gh-pages
           requires:
             - master-fetch
+  dunfell-prepare-fetch-build:
+    jobs:
+      - dunfell-prepare:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      - dunfell-fetch:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - dunfell-prepare
+      - dunfell-build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - dunfell-fetch
