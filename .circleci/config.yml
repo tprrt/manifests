@@ -43,6 +43,9 @@ commands:
             cd dist
             repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m <<parameters.manifest>>
             repo sync -j4
+            repo manifest -r -o manifest.xml
+      - store_artifacts:
+          path: ./dist/manifest.xml
       - persist_to_workspace:
           root: .
           paths:
@@ -68,6 +71,10 @@ commands:
             cd dist
             source ./layers/oe-init-build-env
             bitbake --runall=fetch core-image-minimal
+      - store_artifacts:
+          path: ./dist/conf/local.conf
+      - store_artifacts:
+          path: ./dist/conf/bblayers.conf
       - save_cache:
           key: downloads-{{ .Branch }}-<<parameters.manifest>>
           paths:
@@ -102,7 +109,7 @@ commands:
           paths:
             - dist/build/sstate-cache
       - store_artifacts:
-          path: build/tmp/deploy
+          path: ./dist/tmp/deploy
 jobs:
   master-prepare:
     executor: docker-python3
