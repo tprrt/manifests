@@ -22,7 +22,7 @@ In first, you should install the `git-repo`_ utility:
     chmod a+x ~/bin/repo
 
 
-*Note: make sure ~/bin exists and it is part of your PATH*
+Make sure ~/bin exists and it is part of your PATH.
 
 Pull the OE/Yocto build environment
 ===================================
@@ -38,8 +38,9 @@ Download the OE/Yocto build environment:
     repo sync -j4
 
 
-Then Bitbake and all required layers will be downloaded. Moreover, the default manifest will
-fetch the master branch of required layers to build the nodistro flavor.
+Then Bitbake and all required layers will be downloaded. Moreover, the default
+manifest will fetch the master branch of required layers to build the nodistro
+flavor.
 
 For example, to fetch the dunfell branch of layers:
 
@@ -64,14 +65,14 @@ Currently two distro flavors are available:
 - nodistro
 - exiguous *(coming soon)*
 
-To select the right distro configuration, it is only required to set both environment variables:
+To select the right distro configuration, it is only required to set both
+environment variables:
 
 - `DISTRO`
 - `TEMPLATECONF`
 
-*Note*
-
-You can also specify `BDIR`, if you want build each distro flavor in a separated folder.
+You can also specify `BDIR`, if you want build each distro flavor in a separated
+folder.
 
 For example, to build the exiguous distro:
 
@@ -90,8 +91,6 @@ By default, the variable:
 - `DISTRO` is equal to `nodistro`
 - `TEMPLATECONF` is equal to `meta/conf`
 - `BDIR` is equal to `build`
-
-*Note*
 
 If you when reduce the build time you should modify the paths to share the
 following folders between your different build environments:
