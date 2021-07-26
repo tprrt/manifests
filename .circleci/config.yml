@@ -6,7 +6,7 @@ executors:
     resource_class: medium
   docker-python3:
     docker:
-      - image: circleci/python:3.9.1-buster
+      - image: cimg/python:3.9.6
     resource_class: medium
 commands:
   prepare:
