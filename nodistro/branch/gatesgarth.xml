@@ -13,7 +13,8 @@
   <project remote="openembedded" revision="gatesgarth" name="openembedded-core" path="layers" />
   <project remote="openembedded" revision="gatesgarth" name="meta-openembedded" path="layers/meta-openembedded" />
 
-  <!-- Yocto project layers -->
+  <!-- Yocto Project layers -->
+  <project remote="yocto" revision="gatesgarth" name="meta-arm" path="layers/meta-arm" />
   <project remote="yocto" revision="gatesgarth" name="meta-freescale" path="layers/meta-freescale" />
   <project remote="yocto" revision="gatesgarth" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
   <project remote="yocto" revision="gatesgarth" name="meta-ti" path="layers/meta-ti" />
