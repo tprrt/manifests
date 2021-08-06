@@ -2,9 +2,9 @@
 <manifest>
   <include name="nodistro/branch/master.xml" />
 
-  <remote fetch="git://git.yoctoproject.org" name="yoctoproject"/>
+  <remote fetch="git://github.com/tprrt" name="tprrt"/>
 
-  <!-- Yoctoproject layer -->
-  <project remote="yoctoproject" revision="master" name="meta-yocto" path="layers/meta-yocto" />
+  <!-- Exiguous layer -->
+  <project remote="tprrt" revision="master" name="meta-exiguous" path="layers/meta-exiguous" />
 
 </manifest>
