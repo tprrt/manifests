@@ -5,6 +5,6 @@
   <remote fetch="git://github.com/tprrt" name="tprrt"/>
 
   <!-- Exiguous layer -->
-  <project remote="tprrt" revision="dunfell" name="meta-tprrt" path="layers/meta-tprrt" />
+  <project remote="tprrt" revision="dunfell" name="meta-exiguous" path="layers/meta-exiguous" />
 
 </manifest>
