@@ -13,7 +13,8 @@
   <project remote="openembedded" revision="master" name="openembedded-core" path="layers" />
   <project remote="openembedded" revision="master" name="meta-openembedded" path="layers/meta-openembedded" />
 
-  <!-- Yocto project layers -->
+  <!-- Yocto Project layers -->
+  <project remote="yocto" revision="master" name="meta-arm" path="layers/meta-arm" />
   <project remote="yocto" revision="master" name="meta-freescale" path="layers/meta-freescale" />
   <project remote="yocto" revision="master" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
   <project remote="yocto" revision="master" name="meta-ti" path="layers/meta-ti" />
