@@ -5,7 +5,7 @@ executors:
       - image: tprrt/debian-oe:latest
     resource_class: large
 commands:
-  prepare:
+  fetch:
     parameters:
       manifest:
         default: nodistro/branch/master.xml
@@ -30,39 +30,6 @@ commands:
             repo manifest -r -o manifest.xml
       - store_artifacts:
           path: ./dist/manifest.xml
-      - persist_to_workspace:
-          root: .
-          paths:
-            - dist
-            - .gitconfig
-            - .ssh
-  fetch:
-    parameters:
-      manifest:
-        default: nodistro/branch/master.xml
-        type: string
-    steps:
-      - attach_workspace:
-          at: .
-      - restore_cache:
-          keys:
-            - downloads-{{ .Branch }}-<<parameters.manifest>>
-            - downloads-{{ .Branch }}-
-            - downloads-
-      - run:
-          name: Fetch sources
-          command: |
-            cd dist
-            source ./layers/oe-init-build-env
-            bitbake --runall=fetch core-image-minimal
-      - store_artifacts:
-          path: ./dist/conf/local.conf
-      - store_artifacts:
-          path: ./dist/conf/bblayers.conf
-      - save_cache:
-          key: downloads-{{ .Branch }}-<<parameters.manifest>>
-          paths:
-            - dist/build/downloads
       - persist_to_workspace:
           root: .
           paths:
@@ -95,16 +62,6 @@ commands:
       - store_artifacts:
           path: ./dist/tmp/deploy
 jobs:
-  master-prepare:
-    executor: docker-oe
-    steps:
-      - prepare:
-        manifest: nodistro/branch/master.xml
-  dunfell-prepare:
-    executor: docker-oe
-    steps:
-      - prepare:
-        manifest: nodistro/branch/dunfell.xml
   master-fetch:
     executor: docker-oe
     steps:
@@ -117,30 +74,27 @@ jobs:
         manifest: nodistro/branch/dunfell.xml
   master-build:
     executor: docker-oe
+    environment:
+      BB_NUMBER_THREADS: 3
     steps:
-      - fetch:
+      - build:
         manifest: nodistro/branch/master.xml
   dunfell-build:
     executor: docker-oe
+    environment:
+      BB_NUMBER_THREADS: 3
     steps:
-      - fetch:
+      - build:
         manifest: nodistro/branch/dunfell.xml
 workflows:
   version: 2
-  master-prepare-fetch-build:
+  master-fetch-build:
     jobs:
-      - master-prepare:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
       - master-fetch:
           filters:
             branches:
               ignore:
                 - gh-pages
-          requires:
-            - master-prepare
       - master-build:
           filters:
             branches:
@@ -148,20 +102,13 @@ workflows:
                 - gh-pages
           requires:
             - master-fetch
-  dunfell-prepare-fetch-build:
+  dunfell-fetch-build:
     jobs:
-      - dunfell-prepare:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
       - dunfell-fetch:
           filters:
             branches:
               ignore:
                 - gh-pages
-          requires:
-            - dunfell-prepare
       - dunfell-build:
           filters:
             branches:
