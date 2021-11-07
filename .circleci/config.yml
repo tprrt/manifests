@@ -4,10 +4,6 @@ executors:
     docker:
       - image: tprrt/debian-oe:latest
     resource_class: medium
-  docker-python3:
-    docker:
-      - image: cimg/python:3.9.6
-    resource_class: medium
 commands:
   prepare:
     parameters:
@@ -16,29 +12,17 @@ commands:
         type: string
     steps:
       - run:
-          name: Install git-repo
-          command: |
-            mkdir ~/bin
-            wget https://commondatastorage.googleapis.com/git-repo-downloads/repo -O ~/bin/repo
-            chmod a+x ~/bin/repo
-            echo 'export PATH="${PATH}:~/bin"' >> ${BASH_ENV}
-      - run:
           name: Configure Git
           command: |
-            git config --global user.email "tprrt@tupi.fr"
-            git config --global user.name "tprrt"
-      - run:
-          name: Configure SSH
-          command: |
-            mkdir ~/.ssh
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
-            ssh-keyscan git.openembedded.org >> ~/.ssh/known_hosts
-            ssh-keyscan git.yoctoproject.org >> ~/.ssh/known_hosts
+            git config --global user.email ${CIRCLE_GIT_EMAIL}
+            git config --global user.name ${CIRCLE_GIT_NAME}
       # - setup_remote_docker:
       #     docker_layer_caching: true
       - run:
           name: Setup the build environment
           command: |
+            echo 'export PATH="${PATH}:/home/devuser/.local/bin"' >> $BASH_ENV
+            source $BASH_ENV
             mkdir dist
             cd dist
             repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m <<parameters.manifest>>
@@ -112,12 +96,12 @@ commands:
           path: ./dist/tmp/deploy
 jobs:
   master-prepare:
-    executor: docker-python3
+    executor: docker-oe
     steps:
       - prepare:
         manifest: nodistro/branch/master.xml
   dunfell-prepare:
-    executor: docker-python3
+    executor: docker-oe
     steps:
       - prepare:
         manifest: nodistro/branch/dunfell.xml
