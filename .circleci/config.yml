@@ -3,7 +3,7 @@ executors:
   docker-oe:
     docker:
       - image: tprrt/debian-oe:latest
-    resource_class: medium
+    resource_class: large
 commands:
   prepare:
     parameters:
