@@ -76,14 +76,14 @@ jobs:
   master-build:
     executor: docker-oe
     environment:
-      BB_NUMBER_THREADS: 3
+      BB_NUMBER_THREADS: 2
     steps:
       - build:
         manifest: nodistro/branch/master.xml
   dunfell-build:
     executor: docker-oe
     environment:
-      BB_NUMBER_THREADS: 3
+      BB_NUMBER_THREADS: 2
     steps:
       - build:
         manifest: nodistro/branch/dunfell.xml
