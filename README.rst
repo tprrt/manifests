@@ -19,7 +19,7 @@ In first, you should install the `git-repo`_ utility:
 
     mkdir ~/bin
     curl https://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-    chmod a+x ~/bin/repo
+    chmod a+rx ~/bin/repo
 
 
 Make sure ~/bin exists and it is part of your PATH.
