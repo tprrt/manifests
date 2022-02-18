@@ -73,13 +73,6 @@ jobs:
     steps:
       - fetch:
         manifest: nodistro/branch/dunfell.xml
-  master-build:
-    executor: docker-oe
-    environment:
-      BB_NUMBER_THREADS: 2
-    steps:
-      - build:
-        manifest: nodistro/branch/master.xml
   dunfell-build:
     executor: docker-oe
     environment:
@@ -89,20 +82,13 @@ jobs:
         manifest: nodistro/branch/dunfell.xml
 workflows:
   version: 2
-  master-fetch-build:
+  master-fetch:
     jobs:
       - master-fetch:
           filters:
             branches:
               ignore:
                 - gh-pages
-      - master-build:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-          requires:
-            - master-fetch
   dunfell-fetch-build:
     jobs:
       - dunfell-fetch:
