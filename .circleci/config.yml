@@ -68,6 +68,16 @@ jobs:
     steps:
       - fetch:
         manifest: nodistro/branch/master.xml
+  honister-fetch:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/honister.xml
+  hardknott-fetch:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/hardknott.xml
   dunfell-fetch:
     executor: docker-oe
     steps:
@@ -83,6 +93,20 @@ jobs:
 workflows:
   version: 2
   master-fetch:
+    jobs:
+      - master-fetch:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+  honister-fetch:
+    jobs:
+      - master-fetch:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+  hardknott-fetch:
     jobs:
       - master-fetch:
           filters:
