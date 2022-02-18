@@ -85,8 +85,6 @@ jobs:
         manifest: nodistro/branch/dunfell.xml
   dunfell-build:
     executor: docker-oe
-    environment:
-      BB_NUMBER_THREADS: 2
     steps:
       - build:
         manifest: nodistro/branch/dunfell.xml
