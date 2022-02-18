@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="5" revision="honister"/>
+
+  <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
+  <remote fetch="git://git.openembedded.org" name="openembedded"/>
+  <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
+  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+
+  <!-- Openembedded layers -->
+  <project remote="openembedded" revision="1.52" name="bitbake" path="layers/bitbake" />
+  <project remote="openembedded" revision="honister" name="openembedded-core" path="layers" />
+  <project remote="openembedded" revision="honister" name="meta-openembedded" path="layers/meta-openembedded" />
+
+  <!-- Yocto Project layers -->
+  <project remote="yocto" revision="honister" name="meta-arm" path="layers/meta-arm" />
+  <project remote="yocto" revision="honister" name="meta-freescale" path="layers/meta-freescale" />
+  <project remote="yocto" revision="honister" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
+  <!-- <project remote="yocto" revision="honister" name="meta-ti" path="layers/meta-ti" /> -->
+  <project remote="yocto" revision="honister" name="meta-virtualization" path="layers/meta-virtualization" />
+
+  <!-- STM32 layer -->
+  <project remote="stm32mp" revision="honister" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" />
+
+  <!-- Atmel layer -->
+  <!-- <project remote="atmel" revision="honister" name="meta-atmel" path="layers/meta-atmel" /> -->
+
+</manifest>
