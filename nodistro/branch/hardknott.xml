@@ -17,7 +17,7 @@
   <project remote="yocto" revision="hardknott" name="meta-arm" path="layers/meta-arm" />
   <project remote="yocto" revision="hardknott" name="meta-freescale" path="layers/meta-freescale" />
   <project remote="yocto" revision="hardknott" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
-  <project remote="yocto" revision="hardknott" name="meta-ti" path="layers/meta-ti" />
+  <!-- <project remote="yocto" revision="hardknott" name="meta-ti" path="layers/meta-ti" /> -->
   <project remote="yocto" revision="hardknott" name="meta-virtualization" path="layers/meta-virtualization" />
 
   <!-- STM32 layer -->
