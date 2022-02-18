@@ -36,32 +36,32 @@ commands:
             - dist
             - .gitconfig
             - .ssh
-  build:
-    parameters:
-      manifest:
-        default: nodistro/branch/master.xml
-        type: string
-    steps:
-      - attach_workspace:
-          at: .
-      - restore_cache:
-          keys:
-            - sstate-cache-{{ .Branch }}-<<parameters.manifest>>
-            - sstate-cache-{{ .Branch }}-
-            - sstate-cache-
-      - run:
-          name: Build the image
-          no_output_timeout: 30m
-          command: |
-            cd dist
-            source ./layers/oe-init-build-env
-            bitbake core-image-minimal
-      - save_cache:
-          key: sstate-cache-{{ .Branch }}-<<parameters.manifest>>
-          paths:
-            - dist/build/sstate-cache
-      - store_artifacts:
-          path: ./dist/tmp/deploy
+  # build:
+  #   parameters:
+  #     manifest:
+  #       default: nodistro/branch/master.xml
+  #       type: string
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - restore_cache:
+  #         keys:
+  #           - sstate-cache-{{ .Branch }}-<<parameters.manifest>>
+  #           - sstate-cache-{{ .Branch }}-
+  #           - sstate-cache-
+  #     - run:
+  #         name: Build the image
+  #         no_output_timeout: 30m
+  #         command: |
+  #           cd dist
+  #           source ./layers/oe-init-build-env
+  #           bitbake core-image-minimal
+  #     - save_cache:
+  #         key: sstate-cache-{{ .Branch }}-<<parameters.manifest>>
+  #         paths:
+  #           - dist/build/sstate-cache
+  #     - store_artifacts:
+  #         path: ./dist/tmp/deploy
 jobs:
   master-fetch:
     executor: docker-oe
@@ -83,11 +83,11 @@ jobs:
     steps:
       - fetch:
         manifest: nodistro/branch/dunfell.xml
-  dunfell-build:
-    executor: docker-oe
-    steps:
-      - build:
-        manifest: nodistro/branch/dunfell.xml
+  # dunfell-build:
+  #   executor: docker-oe
+  #   steps:
+  #     - build:
+  #       manifest: nodistro/branch/dunfell.xml
 workflows:
   version: 2
   master-fetch:
@@ -118,10 +118,10 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-      - dunfell-build:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-          requires:
-            - dunfell-fetch
+      # - dunfell-build:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - dunfell-fetch
