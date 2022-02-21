@@ -3,10 +3,12 @@
 
   <default sync-j="5" revision="hardknott"/>
 
-  <!-- <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/> -->
   <remote fetch="git://git.openembedded.org" name="openembedded"/>
-  <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+
+  <!-- <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/> -->
+  <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
+  <remote fetch="ssh://git@github.com/OE4T" name="tegra" />
 
   <!-- Openembedded layers -->
   <project remote="openembedded" revision="1.50" name="bitbake" path="layers/bitbake" />
@@ -20,10 +22,13 @@
   <!-- <project remote="yocto" revision="hardknott" name="meta-ti" path="layers/meta-ti" /> -->
   <project remote="yocto" revision="hardknott" name="meta-virtualization" path="layers/meta-virtualization" />
 
+  <!-- Atmel layer -->
+  <!-- <project remote="atmel" revision="hardknott" name="meta-atmel" path="layers/meta-atmel" /> -->
+
   <!-- STM32 layer -->
   <project remote="stm32mp" revision="hardknott" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" />
 
-  <!-- Atmel layer -->
-  <!-- <project remote="atmel" revision="hardknott" name="meta-atmel" path="layers/meta-atmel" /> -->
+  <!-- Tegra layer -->
+  <project remote="tegra" revision="hardknott" name="meta-tegra" path="layers/meta-tegra" />
 
 </manifest>
