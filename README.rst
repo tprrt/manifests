@@ -45,16 +45,16 @@ build the nodistro flavor.
 
 Then Bitbake and all required layers will be downloaded.
 
-Following, an example to pull the layers of the Dunfell (LTS) release:
+Following, an example to pull the layers of the Kirkstone (LTS) release:
 
 .. code-block:: bash
 
-    repo init -u git@github.com:tprrt/manifests.git -b master -m nodistro/branch/dunfell.xml
+    repo init -u git@github.com:tprrt/manifests.git -b master -m nodistro/branch/kirkstone.xml
     repo sync -j4
 
 
-Select the distribution
-=======================
+Select the configuration and distribution
+=========================================
 
 Currently two distro flavors are available:
 
@@ -99,24 +99,41 @@ Which are by default located into `BDIR`.
 Select the machine
 ==================
 
-By default, if the `MACHINE` isn't specified then the `Qemux86-64` target will
-be used.
+By default, if the `MACHINE` variable isn't specified then the `Qemux86-64`
+target will be used.
 
 The `MACHINE` environment variable can be set to all available machine
 configurations defined into `meta-\*/conf/machine/\*.conf`:
 
+- `qemux86-64` to use `meta/conf/machine/qemux86-64.conf`,
 - `raspberrypi4-64` to use `meta-raspberrypi/conf/machine/raspberrypi4-64.conf`,
 - `sama5d2-xplained-sd` to use `meta-atmel/conf/machine/sama5d2-xplained-sd.conf`,
 - `imx8qxp-mek` to use `meta-freescale/conf/machine/imx8qxp-mek.conf`,
 - `beaglebone` to use `meta-ti/conf/machine/beaglebone.conf`,
 - etc.
 
-For example, to use a Raspberrypi 4 target:
+For exemple, to use Qemu ARMv8:
 
 .. code-block:: bash
 
     bitbake-layers add-layer ../layers/meta-raspberrypi
+    export MACHINE="qemuarm64"
+
+
+Here, an example, to use a Raspberrypi 4 target:
+
+.. code-block:: bash
+
     export MACHINE="raspberrypi4-64"
+
+You will notice that it is also necessary to add the layer containing the
+machine configuration when it isn't already present in `conf/bblayers.conf`.
+
+For example, to add the meta-raspberrypi:
+
+.. code-block:: bash
+
+    bitbake-layers add-layer ../layers/meta-raspberrypi
 
 
 Build an image or a SDK
