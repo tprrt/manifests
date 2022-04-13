@@ -7,6 +7,7 @@
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
 
   <!-- <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/> -->
+  <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
   <remote fetch="ssh://git@github.com/OE4T" name="tegra" />
 
