@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="5" revision="kirkstone"/>
+
+  <remote fetch="git://git.openembedded.org" name="openembedded"/>
+  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+
+  <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
+  <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
+  <!-- <remote fetch="ssh://git@github.com/sifive" name="sifive"/> -->
+  <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
+  <remote fetch="ssh://git@github.com/OE4T" name="tegra" />
+
+  <!-- Openembedded layers -->
+  <project remote="openembedded" revision="2.0" name="bitbake" path="layers/bitbake" />
+  <project remote="openembedded" revision="kirkstone" name="openembedded-core" path="layers" />
+  <project remote="openembedded" revision="kirkstone" name="meta-openembedded" path="layers/meta-openembedded" />
+
+  <!-- Yocto Project layers -->
+  <project remote="yocto" revision="kirkstone" name="meta-arm" path="layers/meta-arm" />
+  <project remote="yocto" revision="kirkstone" name="meta-freescale" path="layers/meta-freescale" />
+  <project remote="yocto" revision="kirkstone" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
+  <project remote="yocto" revision="kirkstone" name="meta-ti" path="layers/meta-ti" />
+  <project remote="yocto" revision="kirkstone" name="meta-virtualization" path="layers/meta-virtualization" />
+
+  <!-- Atmel layer -->
+  <project remote="atmel" revision="kirkstone" name="meta-atmel" path="layers/meta-atmel" />
+
+  <!-- RISC-V layer -->
+  <project remote="riscv" revision="kirkstone" name="meta-riscv" path="layers/meta-riscv" />
+
+  <!-- SiFive layer -->
+  <!-- <project remote="sifive" revision="kirkstone" name="meta-sifive" path="layers/meta-sifive" /> -->
+
+  <!-- STM32 layer -->
+  <project remote="stm32mp" revision="kirkstone" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" />
+
+  <!-- Tegra layer -->
+  <project remote="tegra" revision="kirkstone" name="meta-tegra" path="layers/meta-tegra" />
+
+</manifest>

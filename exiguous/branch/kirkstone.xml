@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <include name="nodistro/branch/kirkstone.xml" />
+
+  <remote fetch="git://github.com/tprrt" name="tprrt"/>
+
+  <!-- Exiguous layer -->
+  <project remote="tprrt" revision="kirkstone" name="meta-exiguous" path="layers/meta-exiguous" />
+
+</manifest>

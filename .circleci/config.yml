@@ -68,26 +68,26 @@ jobs:
     steps:
       - fetch:
         manifest: nodistro/branch/master.xml
+  kirkstone-fetch:
+    executor: docker-oe
+    steps:
+      - fetch:
+        manifest: nodistro/branch/kirkstone.xml
+  # kirkstone-build:
+  #   executor: docker-oe
+  #   steps:
+  #     - build:
+  #       manifest: nodistro/branch/kirkstone.xml
   honister-fetch:
     executor: docker-oe
     steps:
       - fetch:
         manifest: nodistro/branch/honister.xml
-  hardknott-fetch:
-    executor: docker-oe
-    steps:
-      - fetch:
-        manifest: nodistro/branch/hardknott.xml
   dunfell-fetch:
     executor: docker-oe
     steps:
       - fetch:
         manifest: nodistro/branch/dunfell.xml
-  # dunfell-build:
-  #   executor: docker-oe
-  #   steps:
-  #     - build:
-  #       manifest: nodistro/branch/dunfell.xml
 workflows:
   version: 2
   master-fetch:
@@ -97,14 +97,21 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-  honister-fetch:
+  kirkstone-fetch-build:
     jobs:
-      - master-fetch:
+      - kirkstone-fetch:
           filters:
             branches:
               ignore:
                 - gh-pages
-  hardknott-fetch:
+      # - kirkstone-build:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - kirkstone-fetch
+  honister-fetch:
     jobs:
       - master-fetch:
           filters:
@@ -118,10 +125,3 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-      # - dunfell-build:
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - gh-pages
-      #     requires:
-      #       - dunfell-fetch
