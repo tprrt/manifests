@@ -25,7 +25,7 @@
   <project remote="yocto" revision="kirkstone" name="meta-virtualization" path="layers/meta-virtualization" />
 
   <!-- Atmel layer -->
-  <project remote="atmel" revision="kirkstone" name="meta-atmel" path="layers/meta-atmel" />
+  <!-- <project remote="atmel" revision="kirkstone" name="meta-atmel" path="layers/meta-atmel" /> -->
 
   <!-- RISC-V layer -->
   <project remote="riscv" revision="kirkstone" name="meta-riscv" path="layers/meta-riscv" />
