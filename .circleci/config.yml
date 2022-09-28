@@ -78,11 +78,6 @@ jobs:
   #   steps:
   #     - build:
   #       manifest: nodistro/branch/kirkstone.xml
-  honister-fetch:
-    executor: docker-oe
-    steps:
-      - fetch:
-        manifest: nodistro/branch/honister.xml
   dunfell-fetch:
     executor: docker-oe
     steps:
@@ -111,13 +106,6 @@ workflows:
       #           - gh-pages
       #     requires:
       #       - kirkstone-fetch
-  honister-fetch:
-    jobs:
-      - master-fetch:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
   dunfell-fetch-build:
     jobs:
       - dunfell-fetch:
