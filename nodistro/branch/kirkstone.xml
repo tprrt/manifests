@@ -20,6 +20,7 @@
   <!-- Yocto Project layers -->
   <project remote="yocto" revision="kirkstone" name="meta-arm" path="layers/meta-arm" />
   <project remote="yocto" revision="kirkstone" name="meta-freescale" path="layers/meta-freescale" />
+  <project remote="yocto" revision="kirkstone" name="meta-intel" path="layers/meta-intel" />
   <project remote="yocto" revision="kirkstone" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
   <project remote="yocto" revision="kirkstone" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="kirkstone" name="meta-virtualization" path="layers/meta-virtualization" />
