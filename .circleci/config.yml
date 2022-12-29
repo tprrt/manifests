@@ -51,7 +51,7 @@ commands:
   #           - sstate-cache-
   #     - run:
   #         name: Build the image
-  #         no_output_timeout: 30m
+  #         no_output_timeout: 300m
   #         command: |
   #           cd dist
   #           source ./layers/oe-init-build-env
