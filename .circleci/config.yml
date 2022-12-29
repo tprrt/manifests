@@ -16,8 +16,8 @@ commands:
           command: |
             git config --global user.email ${CIRCLE_GIT_EMAIL}
             git config --global user.name ${CIRCLE_GIT_NAME}
-      # - setup_remote_docker:
-      #     docker_layer_caching: true
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Setup the build environment
           command: |
