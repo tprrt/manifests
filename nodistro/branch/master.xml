@@ -6,6 +6,7 @@
   <remote fetch="git://git.openembedded.org" name="openembedded"/>
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
 
+  <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <remote fetch="ssh://git@github.com/sifive" name="sifive"/>
@@ -37,7 +38,10 @@
   <!-- STM32 layer -->
   <!-- <project remote="stm32mp" revision="master" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" /> -->
 
-  <!-- Atmel layer -->
+  <!-- Tegra layer -->
   <project remote="tegra" revision="master" name="meta-tegra" path="layers/meta-tegra" />
+
+  <!-- Clang / LLVM layer -->
+  <project remote="kraj" revision="master" name="meta-clang" path="layers/meta-clang" />
 
 </manifest>

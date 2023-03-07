@@ -6,6 +6,7 @@
   <remote fetch="git://git.openembedded.org" name="openembedded"/>
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
 
+  <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <!-- <remote fetch="ssh://git@github.com/sifive" name="sifive"/> -->
@@ -39,5 +40,8 @@
 
   <!-- Tegra layer -->
   <project remote="tegra" revision="kirkstone" name="meta-tegra" path="layers/meta-tegra" />
+
+  <!-- Clang / LLVM layer -->
+  <project remote="kraj" revision="kirkstone" name="meta-clang" path="layers/meta-clang" />
 
 </manifest>
