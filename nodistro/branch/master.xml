@@ -23,6 +23,7 @@
   <project remote="yocto" revision="master" name="meta-freescale" path="layers/meta-freescale" />
   <project remote="yocto" revision="master" name="meta-intel" path="layers/meta-intel" />
   <project remote="yocto" revision="master" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
+  <project remote="yocto" revision="master" name="meta-security" path="layers/meta-security" />
   <project remote="yocto" revision="master" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="master" name="meta-virtualization" path="layers/meta-virtualization" />
 
