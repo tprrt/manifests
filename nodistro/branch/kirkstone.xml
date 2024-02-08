@@ -9,6 +9,7 @@
   <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
+  <remote fetch="ssh://git@github.com/ros" name="ros"/>
   <!-- <remote fetch="ssh://git@github.com/sifive" name="sifive"/> -->
   <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
   <remote fetch="ssh://git@github.com/OE4T" name="tegra" />
@@ -32,6 +33,9 @@
 
   <!-- RISC-V layer -->
   <project remote="riscv" revision="kirkstone" name="meta-riscv" path="layers/meta-riscv" />
+
+  <!-- ROS layer -->
+  <project remote="ros" revision="master" name="meta-ros" path="layers/meta-ros" />
 
   <!-- SiFive layer -->
   <!-- <project remote="sifive" revision="kirkstone" name="meta-sifive" path="layers/meta-sifive" /> -->
