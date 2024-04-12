@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="5" revision="scarthgap"/>
+
+  <remote fetch="git://git.openembedded.org" name="openembedded"/>
+  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+
+  <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
+  <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
+  <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
+  <remote fetch="ssh://git@github.com/ros" name="ros"/>
+  <remote fetch="ssh://git@github.com/sifive" name="sifive"/>
+  <remote fetch="ssh://git@github.com/STMicroelectronics" name="stm32mp"/>
+  <remote fetch="ssh://git@github.com/OE4T" name="tegra" />
+
+  <!-- Openembedded layers -->
+  <project remote="openembedded" revision="2.8" name="bitbake" path="layers/bitbake" />
+  <project remote="openembedded" revision="scarthgap" name="openembedded-core" path="layers" />
+  <project remote="openembedded" revision="scarthgap" name="meta-openembedded" path="layers/meta-openembedded" />
+
+  <!-- Yocto Project layers -->
+  <project remote="yocto" revision="scarthgap" name="meta-arm" path="layers/meta-arm" />
+  <project remote="yocto" revision="scarthgap" name="meta-freescale" path="layers/meta-freescale" />
+  <project remote="yocto" revision="scarthgap" name="meta-intel" path="layers/meta-intel" />
+  <project remote="yocto" revision="scarthgap" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
+  <project remote="yocto" revision="master" name="meta-security" path="layers/meta-security" />
+  <project remote="yocto" revision="scarthgap" name="meta-ti" path="layers/meta-ti" />
+  <project remote="yocto" revision="scarthgap" name="meta-virtualization" path="layers/meta-virtualization" />
+
+  <!-- Atmel layer -->
+  <project remote="atmel" revision="scarthgap" name="meta-atmel" path="layers/meta-atmel" />
+
+  <!-- RISC-V layer -->
+  <project remote="riscv" revision="scarthgap" name="meta-riscv" path="layers/meta-riscv" />
+
+  <!-- ROS layer -->
+  <project remote="ros" revision="master" name="meta-ros" path="layers/meta-ros" />
+
+  <!-- SiFive layer -->
+  <project remote="sifive" revision="scarthgap" name="meta-sifive" path="layers/meta-sifive" />
+
+  <!-- STM32 layer -->
+  <project remote="stm32mp" revision="scarthgap" name="meta-st-stm32mp" path="layers/meta-st-stm32mp" />
+
+  <!-- Tegra layer -->
+  <project remote="tegra" revision="scarthgap" name="meta-tegra" path="layers/meta-tegra" />
+
+  <!-- Clang / LLVM layer -->
+  <project remote="kraj" revision="scarthgap" name="meta-clang" path="layers/meta-clang" />
+
+</manifest>
