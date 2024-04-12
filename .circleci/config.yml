@@ -8,7 +8,7 @@ commands:
   fetch:
     parameters:
       manifest:
-        default: default.xml
+        default: "default.xml"
         type: string
     steps:
       - run:
@@ -39,7 +39,7 @@ commands:
   # build:
   #   parameters:
   #     manifest:
-  #       default: default.xml
+  #       default: "default.xml"
   #       type: string
   #   steps:
   #     - attach_workspace:
@@ -67,22 +67,22 @@ jobs:
     executor: docker-oe
     steps:
       - fetch:
-        manifest: nodistro/branch/master.xml
+        manifest: "nodistro/branch/master.xml"
   kirkstone-fetch:
     executor: docker-oe
     steps:
       - fetch:
-        manifest: nodistro/branch/kirkstone.xml
+        manifest: "nodistro/branch/kirkstone.xml"
   # kirkstone-build:
   #   executor: docker-oe
   #   steps:
   #     - build:
-  #       manifest: nodistro/branch/kirkstone.xml
+  #       manifest: "nodistro/branch/kirkstone.xml"
   scarthgap-fetch:
     executor: docker-oe
     steps:
       - fetch:
-        manifest: nodistro/branch/scarthgap.xml
+        manifest: "nodistro/branch/scarthgap.xml"
   # scarthgap-build:
   #   executor: docker-oe
   #   steps:
