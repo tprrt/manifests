@@ -8,7 +8,7 @@ commands:
   fetch:
     parameters:
       manifest:
-        default: nodistro/branch/master.xml
+        default: default.xml
         type: string
     steps:
       - run:
@@ -39,7 +39,7 @@ commands:
   # build:
   #   parameters:
   #     manifest:
-  #       default: nodistro/branch/master.xml
+  #       default: default.xml
   #       type: string
   #   steps:
   #     - attach_workspace:
