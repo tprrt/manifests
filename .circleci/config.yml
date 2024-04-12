@@ -78,11 +78,16 @@ jobs:
   #   steps:
   #     - build:
   #       manifest: nodistro/branch/kirkstone.xml
-  dunfell-fetch:
+  scarthgap-fetch:
     executor: docker-oe
     steps:
       - fetch:
-        manifest: nodistro/branch/dunfell.xml
+        manifest: nodistro/branch/scarthgap.xml
+  # scarthgap-build:
+  #   executor: docker-oe
+  #   steps:
+  #     - build:
+  #       manifest: "nodistro/branch/scarthgap.xml"
 workflows:
   version: 2
   master-fetch:
@@ -106,10 +111,17 @@ workflows:
       #           - gh-pages
       #     requires:
       #       - kirkstone-fetch
-  dunfell-fetch-build:
+  scarthgap-fetch-build:
     jobs:
-      - dunfell-fetch:
+      - scarthgap-fetch:
           filters:
             branches:
               ignore:
                 - gh-pages
+      # - scarthgap-build:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - scarthgap-fetch
