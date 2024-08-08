@@ -116,7 +116,6 @@ For exemple, to use Qemu ARMv8:
 
 .. code-block:: bash
 
-    bitbake-layers add-layer ../layers/meta-raspberrypi
     export MACHINE="qemuarm64"
 
 
@@ -124,6 +123,7 @@ Here, an example, to use a Raspberrypi 4 target:
 
 .. code-block:: bash
 
+    bitbake-layers add-layer ../layers/meta-raspberrypi
     export MACHINE="raspberrypi4-64"
 
 You will notice that it is also necessary to add the layer containing the
