@@ -25,7 +25,8 @@ commands:
             source $BASH_ENV
             mkdir dist
             cd dist
-            repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m <<parameters.manifest>>
+            echo "Using manifest: << parameters.manifest >>"
+            repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m << parameters.manifest >>
             repo sync -j4
             repo manifest -r -o manifest.xml
       - store_artifacts:
@@ -46,7 +47,7 @@ commands:
   #         at: .
   #     - restore_cache:
   #         keys:
-  #           - sstate-cache-{{ .Branch }}-<<parameters.manifest>>
+  #           - sstate-cache-{{ .Branch }}-<< parameters.manifest >>
   #           - sstate-cache-{{ .Branch }}-
   #           - sstate-cache-
   #     - run:
@@ -57,7 +58,7 @@ commands:
   #           source ./layers/oe-init-build-env
   #           bitbake core-image-minimal
   #     - save_cache:
-  #         key: sstate-cache-{{ .Branch }}-<<parameters.manifest>>
+  #         key: sstate-cache-{{ .Branch }}-<< parameters.manifest >>
   #         paths:
   #           - dist/build/sstate-cache
   #     - store_artifacts:
