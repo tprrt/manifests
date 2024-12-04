@@ -24,8 +24,8 @@
   <project remote="yocto" revision="scarthgap" name="meta-freescale" path="layers/meta-freescale" />
   <project remote="yocto" revision="scarthgap" name="meta-intel" path="layers/meta-intel" />
   <project remote="yocto" revision="scarthgap" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
-  <project remote="yocto" revision="kirkstone" name="meta-rockchip" path="layers/meta-rockchip" />
-  <project remote="yocto" revision="master" name="meta-security" path="layers/meta-security" />
+  <project remote="yocto" revision="scarthgap" name="meta-rockchip" path="layers/meta-rockchip" />
+  <project remote="yocto" revision="scarthgap" name="meta-security" path="layers/meta-security" />
   <project remote="yocto" revision="scarthgap" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="scarthgap" name="meta-virtualization" path="layers/meta-virtualization" />
 
@@ -36,7 +36,7 @@
   <project remote="riscv" revision="scarthgap" name="meta-riscv" path="layers/meta-riscv" />
 
   <!-- ROS layer -->
-  <project remote="ros" revision="master" name="meta-ros" path="layers/meta-ros" />
+  <project remote="ros" revision="scarthgap" name="meta-ros" path="layers/meta-ros" />
 
   <!-- SiFive layer -->
   <project remote="sifive" revision="scarthgap" name="meta-sifive" path="layers/meta-sifive" />
