@@ -5,10 +5,10 @@ executors:
       - image: tprrt/debian-oe:latest
     resource_class: large
 commands:
-  fetch:
+  oe_fetch:
     parameters:
       manifest:
-        default: "default.xml"
+        default: "invalid.xml"
         type: string
     steps:
       - run:
@@ -37,10 +37,10 @@ commands:
             - dist
             - .gitconfig
             - .ssh
-  build:
+  oe_build:
     parameters:
       manifest:
-        default: "default.xml"
+        default: "invalid.xml"
         type: string
     steps:
       - attach_workspace:
@@ -61,68 +61,75 @@ commands:
           key: sstate-cache-{{ .Branch }}-<< parameters.manifest >>
           paths:
             - dist/build/sstate-cache
+            - dist/build/downloads
       - store_artifacts:
           path: ./dist/tmp/deploy
 jobs:
-  master-fetch:
-    executor: docker-oe
+  fetch:
+    executor:
+      name: docker-oe
+    parameters:
+      repo_manifest:
+        type: string
     steps:
-      - fetch:
-        manifest: "nodistro/branch/master.xml"
-  kirkstone-fetch:
-    executor: docker-oe
+      - oe_fetch:
+          manifest: << parameters.repo_manifest >>
+  build:
+    executor:
+      name: docker-oe
+    parameters:
+      repo_manifest:
+        type: string
     steps:
-      - fetch:
-        manifest: "nodistro/branch/kirkstone.xml"
-  # kirkstone-build:
-  #   executor: docker-oe
-  #   steps:
-  #     - build:
-  #       manifest: "nodistro/branch/kirkstone.xml"
-  scarthgap-fetch:
-    executor: docker-oe
-    steps:
-      - fetch:
-        manifest: "nodistro/branch/scarthgap.xml"
-  # scarthgap-build:
-  #   executor: docker-oe
-  #   steps:
-  #     - build:
-  #       manifest: "nodistro/branch/scarthgap.xml"
+      - oe_build:
+          manifest: << parameters.repo_manifest >>
 workflows:
   version: 2
-  master-fetch:
+  master-fetch-build:
     jobs:
-      - master-fetch:
+      - fetch:
+          repo_manifest: "nodistro/branch/master.xml"
           filters:
             branches:
               ignore:
                 - gh-pages
+      # - build:
+      #     repo_manifest: "nodistro/branch/master.xml"
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - fetch
   kirkstone-fetch-build:
     jobs:
-      - kirkstone-fetch:
+      - fetch:
+          repo_manifest: "nodistro/branch/kirkstone.xml"
           filters:
             branches:
               ignore:
                 - gh-pages
-      # - kirkstone-build:
+      # - build:
+      #     repo_manifest: "nodistro/branch/kirkstone.xml"
       #     filters:
       #       branches:
       #         ignore:
       #           - gh-pages
       #     requires:
-      #       - kirkstone-fetch
+      #       - fetch
   scarthgap-fetch-build:
     jobs:
-      - scarthgap-fetch:
+      - fetch:
+          repo_manifest: "nodistro/branch/scarthgap.xml"
           filters:
             branches:
               ignore:
                 - gh-pages
-      # - scarthgap-build:
+      # - build:
+      #     repo_manifest: "nodistro/branch/scarthgap.xml"
       #     filters:
       #       branches:
       #         ignore:
       #           - gh-pages
       #     requires:
-      #       - scarthgap-fetch
+      #       - fetch
