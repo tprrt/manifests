@@ -133,3 +133,72 @@ workflows:
       #           - gh-pages
       #     requires:
       #       - fetch
+  master-weekly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 0"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - fetch:
+          repo_manifest: "nodistro/branch/master.xml"
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      # - build:
+      #     repo_manifest: "nodistro/branch/master.xml"
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - fetch
+  kirkstone-weekly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 0"
+          filters:
+            branches:
+              only:
+                - kirkstone
+    jobs:
+      - fetch:
+          repo_manifest: "nodistro/branch/kirkstone.xml"
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      # - build:
+      #     repo_manifest: "nodistro/branch/kirkstone.xml"
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - fetch
+  scarthgap-weekly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 0"
+          filters:
+            branches:
+              only:
+                - scarthgap
+    jobs:
+      - fetch:
+          repo_manifest: "nodistro/branch/scarthgap.xml"
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      # - build:
+      #     repo_manifest: "nodistro/branch/scarthgap.xml"
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - fetch
