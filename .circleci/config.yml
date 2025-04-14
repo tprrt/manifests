@@ -136,7 +136,7 @@ workflows:
   master-weekly:
     triggers:
       - schedule:
-          cron: "0 0 * * 0"
+          cron: "0 0 * * 1"
           filters:
             branches:
               only:
@@ -159,11 +159,11 @@ workflows:
   kirkstone-weekly:
     triggers:
       - schedule:
-          cron: "0 0 * * 0"
+          cron: "0 0 * * 3"
           filters:
             branches:
               only:
-                - kirkstone
+                - master
     jobs:
       - fetch:
           repo_manifest: "nodistro/branch/kirkstone.xml"
@@ -182,11 +182,11 @@ workflows:
   scarthgap-weekly:
     triggers:
       - schedule:
-          cron: "0 0 * * 0"
+          cron: "0 0 * * 5"
           filters:
             branches:
               only:
-                - scarthgap
+                - master
     jobs:
       - fetch:
           repo_manifest: "nodistro/branch/scarthgap.xml"
