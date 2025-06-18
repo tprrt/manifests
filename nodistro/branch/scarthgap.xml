@@ -7,7 +7,7 @@
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
 
   <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
-  <!-- <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/> -->
+  <remote fetch="ssh://git@github.com/linux4microchip" name="microchip"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <remote fetch="ssh://git@github.com/ros" name="ros"/>
   <remote fetch="ssh://git@github.com/sifive" name="sifive"/>
@@ -29,8 +29,8 @@
   <project remote="yocto" revision="scarthgap" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="scarthgap" name="meta-virtualization" path="layers/meta-virtualization" />
 
-  <!-- Atmel layer -->
-  <!-- <project remote="atmel" revision="scarthgap" name="meta-atmel" path="layers/meta-atmel" /> -->
+  <!-- Microchip layer -->
+  <project remote="microchip" revision="scarthgap" name="meta-mchp" path="layers/meta-mchp" />
 
   <!-- RISC-V layer -->
   <project remote="riscv" revision="scarthgap" name="meta-riscv" path="layers/meta-riscv" />
