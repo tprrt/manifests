@@ -8,6 +8,26 @@ git-repo manifests
 
 A collection of `git-repo`_ manifests to set up OE/Yocto build environments.
 
+License
+=======
+
+This project is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later).
+
+Copyright (C) 2026 Thomas Perrot
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see https://www.gnu.org/licenses/.
+
 ----
 
 Install git-repo
@@ -152,6 +172,42 @@ Or, to build a SDK:
 
     bitbake -c populate_sdk core-image-minimal
 
+
+Support
+=======
+
+If you find this project useful, please consider supporting its development:
+
+- PayPal: https://paypal.me/tprrt
+
+Your support helps maintain and improve this project. Thank you!
+
+Contributing
+============
+
+Contributions are welcome! We appreciate bug reports, feature requests,
+documentation improvements, and code contributions.
+
+For detailed information on how to contribute, please read the
+`CONTRIBUTING.rst <CONTRIBUTING.rst>`_ file, which includes:
+
+- How to fork and set up the project
+- Guidelines for making changes to manifests
+- Testing and validation procedures
+- Commit message guidelines
+- Pull request process
+- Issue reporting guidelines
+
+Quick start:
+
+1. Fork the repository
+2. Create a feature branch (``git checkout -b feature/your-feature-name``)
+3. Make your changes following the EditorConfig settings
+4. Test your manifest changes with ``repo init`` and ``repo sync``
+5. Commit with clear, descriptive messages
+6. Submit a pull request
+
+All contributions must follow the project's license (GPL-3.0-or-later).
 
 ----
 
