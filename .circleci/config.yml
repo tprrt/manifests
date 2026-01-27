@@ -14,13 +14,13 @@ commands:
       - run:
           name: Configure Git
           command: |
+            set -e
             git config --global user.email ${CIRCLE_GIT_EMAIL}
             git config --global user.name ${CIRCLE_GIT_NAME}
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
           name: Setup the build environment
           command: |
+            set -e
             echo 'export PATH="${PATH}:/home/devuser/.local/bin"' >> $BASH_ENV
             source $BASH_ENV
             mkdir dist
@@ -54,6 +54,7 @@ commands:
           name: Build the image
           no_output_timeout: 300m
           command: |
+            set -e
             cd dist
             source ./layers/oe-init-build-env
             bitbake core-image-minimal
@@ -84,7 +85,6 @@ jobs:
       - oe_build:
           manifest: << parameters.repo_manifest >>
 workflows:
-  version: 2
   master-fetch-build:
     jobs:
       - fetch:
@@ -144,16 +144,8 @@ workflows:
     jobs:
       - fetch:
           repo_manifest: "nodistro/branch/master.xml"
-          filters:
-            branches:
-              ignore:
-                - gh-pages
       # - build:
       #     repo_manifest: "nodistro/branch/master.xml"
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - gh-pages
       #     requires:
       #       - fetch
   kirkstone-weekly:
@@ -167,16 +159,8 @@ workflows:
     jobs:
       - fetch:
           repo_manifest: "nodistro/branch/kirkstone.xml"
-          filters:
-            branches:
-              ignore:
-                - gh-pages
       # - build:
       #     repo_manifest: "nodistro/branch/kirkstone.xml"
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - gh-pages
       #     requires:
       #       - fetch
   scarthgap-weekly:
@@ -190,15 +174,7 @@ workflows:
     jobs:
       - fetch:
           repo_manifest: "nodistro/branch/scarthgap.xml"
-          filters:
-            branches:
-              ignore:
-                - gh-pages
       # - build:
       #     repo_manifest: "nodistro/branch/scarthgap.xml"
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - gh-pages
       #     requires:
       #       - fetch
