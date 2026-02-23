@@ -10,6 +10,7 @@
 
   <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4microchip" name="microchip"/>
+  <remote fetch="ssh://git@github.com/rauc" name="rauc"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <remote fetch="ssh://git@github.com/ros" name="ros"/>
   <remote fetch="ssh://git@github.com/sifive" name="sifive"/>
@@ -33,6 +34,9 @@
 
   <!-- Microchip layer -->
   <project remote="microchip" revision="scarthgap" name="meta-mchp" path="layers/meta-mchp" />
+
+  <!-- RAUC layer -->
+  <project remote="rauc" revision="scarthgap" name="meta-rauc" path="layers/meta-rauc" />
 
   <!-- RISC-V layer -->
   <project remote="riscv" revision="scarthgap" name="meta-riscv" path="layers/meta-riscv" />

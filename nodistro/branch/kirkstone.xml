@@ -10,6 +10,7 @@
 
   <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
+  <remote fetch="ssh://git@github.com/rauc" name="rauc"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <remote fetch="ssh://git@github.com/ros" name="ros"/>
   <remote fetch="ssh://git@github.com/sifive" name="sifive"/>
@@ -36,6 +37,9 @@
 
   <!-- RISC-V layer -->
   <project remote="riscv" revision="kirkstone" name="meta-riscv" path="layers/meta-riscv" />
+
+  <!-- RAUC layer -->
+  <project remote="rauc" revision="kirkstone" name="meta-rauc" path="layers/meta-rauc" />
 
   <!-- ROS layer -->
   <project remote="ros" revision="kirkstone" name="meta-ros" path="layers/meta-ros" />
