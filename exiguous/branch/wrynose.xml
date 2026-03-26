@@ -2,11 +2,11 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <!-- Copyright (C) 2020-2026 Thomas Perrot <thomas.perrot@tupi.fr> -->
 <manifest>
-  <include name="nodistro/branch/scarthgap.xml" />
+  <include name="nodistro/branch/wrynose.xml" />
 
   <remote fetch="git://github.com/tprrt" name="tprrt"/>
 
   <!-- Exiguous layer -->
-  <project remote="tprrt" revision="scarthgap" name="meta-exiguous" path="layers/meta-exiguous" />
+  <project remote="tprrt" revision="wrynose" name="meta-exiguous" path="layers/meta-exiguous" />
 
 </manifest>
