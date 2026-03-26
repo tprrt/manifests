@@ -29,6 +29,7 @@
   <project remote="yocto" revision="master" name="meta-raspberrypi" path="layers/meta-raspberrypi" />
   <project remote="yocto" revision="master" name="meta-rockchip" path="layers/meta-rockchip" />
   <project remote="yocto" revision="master" name="meta-security" path="layers/meta-security" />
+  <project remote="yocto" revision="master" name="meta-selinux" path="layers/meta-selinux" />
   <project remote="yocto" revision="master" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="master" name="meta-virtualization" path="layers/meta-virtualization" />
 
