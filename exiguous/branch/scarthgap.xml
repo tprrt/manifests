@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
-<!-- Copyright (C) 2026 Thomas Perrot -->
+<!-- Copyright (C) 2020-2026 Thomas Perrot <thomas.perrot@tupi.fr> -->
 <manifest>
   <include name="nodistro/branch/scarthgap.xml" />
 
