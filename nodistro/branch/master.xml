@@ -5,8 +5,8 @@
 
   <default sync-j="5" revision="master"/>
 
-  <remote fetch="git://git.openembedded.org" name="openembedded"/>
-  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+  <remote fetch="https://git.openembedded.org" name="openembedded"/>
+  <remote fetch="https://git.yoctoproject.org" name="yocto"/>
 
   <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
