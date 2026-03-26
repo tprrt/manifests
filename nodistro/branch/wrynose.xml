@@ -17,7 +17,7 @@
   <remote fetch="ssh://git@github.com/OE4T" name="tegra" />
 
   <!-- Openembedded layers -->
-  <project remote="openembedded" revision="2.16" name="bitbake" path="layers/bitbake" />
+  <project remote="openembedded" revision="2.18" name="bitbake" path="layers/bitbake" />
   <project remote="openembedded" revision="wrynose" name="openembedded-core" path="layers" />
   <project remote="openembedded" revision="wrynose" name="meta-openembedded" path="layers/meta-openembedded" />
 
