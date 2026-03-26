@@ -136,6 +136,22 @@ workflows:
       #           - gh-pages
       #     requires:
       #       - fetch
+  wrynose-fetch-build:
+    jobs:
+      - fetch:
+          repo_manifest: "nodistro/branch/wrynose.xml"
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      # - build:
+      #     repo_manifest: "nodistro/branch/wrynose.xml"
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
+      #     requires:
+      #       - fetch
   master-weekly:
     triggers:
       - schedule:
@@ -154,7 +170,7 @@ workflows:
   kirkstone-weekly:
     triggers:
       - schedule:
-          cron: "0 0 * * 3"
+          cron: "0 0 * * 2"
           filters:
             branches:
               only:
@@ -169,7 +185,7 @@ workflows:
   scarthgap-weekly:
     triggers:
       - schedule:
-          cron: "0 0 * * 5"
+          cron: "0 0 * * 3"
           filters:
             branches:
               only:
@@ -179,5 +195,20 @@ workflows:
           repo_manifest: "nodistro/branch/scarthgap.xml"
       # - build:
       #     repo_manifest: "nodistro/branch/scarthgap.xml"
+      #     requires:
+      #       - fetch
+  wrynose-weekly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 4"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - fetch:
+          repo_manifest: "nodistro/branch/wrynose.xml"
+      # - build:
+      #     repo_manifest: "nodistro/branch/wrynose.xml"
       #     requires:
       #       - fetch
