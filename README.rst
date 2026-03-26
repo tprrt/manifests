@@ -13,7 +13,7 @@ License
 
 This project is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later).
 
-Copyright (C) 2026 Thomas Perrot
+Copyright (C) 2020-2026 Thomas Perrot <thomas.perrot@tupi.fr>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -96,7 +96,7 @@ For example, to select the exiguous distro and build it into a separated folder:
 
     export BDIR=build-exiguous
     export DISTRO=exiguous
-    export TEMPLATECONF=meta-exiguous/conf
+    export TEMPLATECONF=../layers/meta-tprrt/meta-exiguous/conf/templates/default
 
     source ./layers/oe-init-build-env
 
@@ -107,7 +107,7 @@ By default, the variable:
 - `TEMPLATECONF` is equal to `meta/conf`
 - `BDIR` is equal to `build`
 
-If you when reduce the build time you should modify the paths to share the
+If you want to reduce the build time you should modify the paths to share the
 following folders between your different build environments:
 
 - `CCACHE_TOP_DIR`
@@ -132,7 +132,7 @@ configurations defined into `meta-\*/conf/machine/\*.conf`:
 - `beaglebone` to use `meta-ti/conf/machine/beaglebone.conf`,
 - etc.
 
-For exemple, to use Qemu ARMv8:
+For example, to use Qemu ARMv8:
 
 .. code-block:: bash
 
