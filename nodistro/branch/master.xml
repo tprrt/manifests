@@ -9,7 +9,7 @@
   <remote fetch="https://git.yoctoproject.org" name="yocto"/>
 
   <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
-  <remote fetch="ssh://git@github.com/linux4sam" name="atmel"/>
+  <remote fetch="ssh://git@github.com/linux4microchip" name="microchip"/>
   <remote fetch="ssh://git@github.com/rauc" name="rauc"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
   <remote fetch="ssh://git@github.com/ros" name="ros"/>
@@ -32,8 +32,8 @@
   <project remote="yocto" revision="master" name="meta-ti" path="layers/meta-ti" />
   <project remote="yocto" revision="master" name="meta-virtualization" path="layers/meta-virtualization" />
 
-  <!-- Atmel layer -->
-  <project remote="atmel" revision="master" name="meta-atmel" path="layers/meta-atmel" />
+  <!-- Microchip layer -->
+  <!-- <project remote="microchip" revision="master" name="meta-mchp" path="layers/meta-mchp" /> -->
 
   <!-- RAUC layer -->
   <project remote="rauc" revision="master" name="meta-rauc" path="layers/meta-rauc" />
