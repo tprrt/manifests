@@ -8,7 +8,6 @@
   <remote fetch="https://git.openembedded.org" name="openembedded"/>
   <remote fetch="https://git.yoctoproject.org" name="yocto"/>
 
-  <remote fetch="ssh://git@github.com/kraj" name="kraj"/>
   <remote fetch="ssh://git@github.com/linux4microchip" name="microchip"/>
   <remote fetch="ssh://git@github.com/rauc" name="rauc"/>
   <remote fetch="ssh://git@github.com/riscv" name="riscv"/>
@@ -53,8 +52,5 @@
 
   <!-- Tegra layer -->
   <project remote="tegra" revision="master" name="meta-tegra" path="layers/meta-tegra" />
-
-  <!-- Clang / LLVM layer -->
-  <project remote="kraj" revision="master" name="meta-clang" path="layers/meta-clang" />
 
 </manifest>
