@@ -29,7 +29,7 @@ commands:
             mkdir dist
             cd dist
             echo "Using manifest: << parameters.manifest >>"
-            repo init -u git@github.com:tprrt/manifests.git -b $CIRCLE_BRANCH -m << parameters.manifest >>
+            repo init -u https://github.com/tprrt/manifests.git -b $CIRCLE_BRANCH -m << parameters.manifest >>
             repo sync -j4
             repo manifest -r -o manifest.xml
       - store_artifacts:
