@@ -4,9 +4,9 @@
 <manifest>
   <include name="nodistro/branch/master.xml" />
 
-  <remote fetch="git://github.com/tprrt" name="tprrt"/>
+  <remote fetch="ssh://git@github.com/tprrt" name="tprrt"/>
 
   <!-- Exiguous layer -->
-  <project remote="tprrt" revision="master" name="meta-exiguous" path="layers/meta-exiguous" />
+  <project remote="tprrt" revision="master" name="meta-tprrt" path="layers/meta-tprrt" />
 
 </manifest>
